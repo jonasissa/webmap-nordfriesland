@@ -1,0 +1,82 @@
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+#map {
+  height: 100%;
+  width: 100%;
+}
+
+#title-box {
+  position: absolute;
+  top: 12px;
+  left: 60px;
+  z-index: 1000;
+
+  background: rgba(255,255,255,0.95);
+  padding: 10px 14px;
+  border-radius: 8px;
+
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  max-width: 500px;
+}
+
+#title-box h2 {
+  margin: 0 0 4px 0;
+  font-size: 17px;
+}
+
+#title-box p {
+  margin: 0;
+  font-size: 13px;
+  color: #444;
+}
+
+.legend {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 10px 12px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.legend h4 {
+  margin: 0 0 6px 0;
+  font-size: 14px;
+}
+
+.legend span {
+  display: inline-block;
+  width: 16px;
+  height: 12px;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+.legend .line {
+  height: 0;
+  width: 20px;
+  border-top: 3px solid;
+}
+
+.legend .line.blue {
+  border-color: #2b8cbe;
+}
+
+.legend .line.purple {
+  border-color: #6a3d9a;
+}
+
+.legend .line.green {
+  border-color: #1b7837;
+}
+
+.legend .dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #ff8c00;
+  border: 1px solid #222;
+}
