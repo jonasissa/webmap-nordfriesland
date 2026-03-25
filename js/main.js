@@ -125,34 +125,6 @@ function styleSchutzgebietePuffer() {
   };
 }
 
-function styleWohngebaeude() {
-  return {
-    color: "#4d4d4d",
-    weight: 1,
-    fillColor: "#737373",
-    fillOpacity: 0.35
-  };
-}
-
-function styleWohngebaeudePuffer800() {
-  return {
-    color: "#1f78b4",
-    weight: 2,
-    dashArray: "5,3",
-    fillColor: "#a6cee3",
-    fillOpacity: 0.12
-  };
-}
-
-function styleWohngebaeudePuffer1000() {
-  return {
-    color: "#6a3d9a",
-    weight: 2,
-    dashArray: "2,4",
-    fillColor: "#cab2d6",
-    fillOpacity: 0.12
-  };
-}
 
 // Hover-Effekt
 function highlightFeature(e) {
@@ -196,9 +168,7 @@ let layerWEA;
 let layerSchutzgebiete;
 let layerSchutzgebietePuffer;
 
-let layerWohngebaeude;
-let layerWohngebaeudePuffer800;
-let layerWohngebaeudePuffer1000;
+
 
 // Promise helper
 function loadGeoJSON(url) {
@@ -220,9 +190,7 @@ Promise.all([
   loadGeoJSON("Daten/Ausschlussflaechen/Schutzgebiete_gesamt.geojson"),
   loadGeoJSON("Daten/Ausschlussflaechen/Schutzgebiete_Puffer_gesamt.geojson"),
 
-  loadGeoJSON("Daten/Gebaeude/Wohngebaeude_NF.geojson"),
-  loadGeoJSON("Daten/Gebaeude/Wohngebaeude_Puffer800.geojson"),
-  loadGeoJSON("Daten/Gebaeude/Wohngebaeude_Puffer1000.geojson")
+  
 ])
 .then(([
   pot800Data,
@@ -231,9 +199,7 @@ Promise.all([
   weaData,
   schutzgebieteData,
   schutzgebietePufferData,
-  wohngebaeudeData,
-  wohngebaeudePuffer800Data,
-  wohngebaeudePuffer1000Data
+  
 ]) => {
 
   // 800 m
@@ -312,33 +278,7 @@ Promise.all([
   });
 
   // Wohngebäude
-  layerWohngebaeude = L.geoJSON(wohngebaeudeData, {
-    style: styleWohngebaeude,
-    onEachFeature: function(feature, layer) {
-      const p = feature.properties || {};
-      layer.bindPopup(`
-        <b>Wohngebäude</b><br>
-        ${Object.keys(p).length ? Object.entries(p).map(([k,v]) => `<b>${k}:</b> ${v}`).join("<br>") : "Keine Attribute verfügbar"}
-      `);
-    }
-  });
-
-  // Wohngebäude-Puffer 800
-  layerWohngebaeudePuffer800 = L.geoJSON(wohngebaeudePuffer800Data, {
-    style: styleWohngebaeudePuffer800,
-    onEachFeature: function(feature, layer) {
-      layer.bindPopup("<b>Wohngebäude – Puffer 800 m</b>");
-    }
-  });
-
-  // Wohngebäude-Puffer 1000
-  layerWohngebaeudePuffer1000 = L.geoJSON(wohngebaeudePuffer1000Data, {
-    style: styleWohngebaeudePuffer1000,
-    onEachFeature: function(feature, layer) {
-      layer.bindPopup("<b>Wohngebäude – Puffer 1.000 m</b>");
-    }
-  });
-
+ 
   // Layer Control
   const baseMaps = {
     "OpenStreetMap": osm
