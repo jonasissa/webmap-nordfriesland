@@ -293,9 +293,6 @@ Promise.all([
     "Schutzgebiete": layerSchutzgebiete,
     "Schutzgebiete – Puffer": layerSchutzgebietePuffer,
 
-    "Wohngebäude": layerWohngebaeude,
-    "Wohngebäude – Puffer 800 m": layerWohngebaeudePuffer800,
-    "Wohngebäude – Puffer 1.000 m": layerWohngebaeudePuffer1000
   };
 
   L.control.layers(baseMaps, overlayMaps, { collapsed: false }).addTo(map);
